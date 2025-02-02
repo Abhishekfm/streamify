@@ -24,7 +24,11 @@
   "userGrowth": [
     { "month": "2023-01", "total": 120000, "active": 65000 },
     { "month": "2023-02", "total": 125000, "active": 68000 },
-    { "month": "2023-03", "total": 131000, "active": 71000 }
+    { "month": "2023-04", "total": 61000, "active": 51000 },
+    { "month": "2023-05", "total": 131000, "active": 71000 },
+    { "month": "2023-07", "total": 121000, "active": 111000 },
+    { "month": "2023-09", "total": 141000, "active": 71000 },
+    { "month": "2023-10", "total": 101000, "active": 91000 }
   ],
   "revenue": [
     { "source": "Subscriptions", "amount": 4200000 },
