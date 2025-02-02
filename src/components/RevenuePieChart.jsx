@@ -1,23 +1,11 @@
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import React from "react";
 
 // Register Chart.js modules
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-// [
-//     {
-//         "source": "Subscriptions",
-//         "value": 4200000,
-//         "id": "e837"
-//     },
-//     {
-//         "source": "Ads",
-//         "value": 1048960,
-//         "id": "9679"
-//     }
-// ]
-
-export default function RevenuePieChart({ data }) {
+const RevenuePieChart = React.memo(function RevenuePieChart({ data }) {
   const chartData = {
     labels: data.map((d) => d.source),
     datasets: [
@@ -48,4 +36,6 @@ export default function RevenuePieChart({ data }) {
       </div>
     </div>
   );
-}
+});
+
+export default RevenuePieChart;

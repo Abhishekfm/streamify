@@ -19,7 +19,6 @@ import {
   MenuOpen,
   Menu,
 } from "@mui/icons-material";
-import { useState } from "react";
 
 export function Sidebar({ className, isOpen, setIsOpen }) {
   const menuItems = [

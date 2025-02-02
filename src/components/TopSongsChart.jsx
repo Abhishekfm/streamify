@@ -7,11 +7,12 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import React from "react";
 
 // Register Chart.js modules
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-export default function TopSongsChart({ data }) {
+const TopSongsChart = React.memo(function TopSongsChart({ data }) {
   const chartData = {
     labels: data.map((d) => d.title),
     datasets: [
@@ -36,4 +37,6 @@ export default function TopSongsChart({ data }) {
       </div>
     </div>
   );
-}
+});
+
+export default TopSongsChart;

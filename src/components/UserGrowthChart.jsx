@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
 
 // Register Chart.js components
 ChartJS.register(...registerables);
 
-export default function UserGrowthChart({ data }) {
+const UserGrowthChart = React.memo(function UserGrowthChart({ data }) {
   useEffect(() => {
     return () => {
       ChartJS?.helpers?.each(ChartJS.instances, function (instance) {
@@ -44,4 +44,6 @@ export default function UserGrowthChart({ data }) {
       </div>
     </div>
   );
-}
+});
+
+export default UserGrowthChart;

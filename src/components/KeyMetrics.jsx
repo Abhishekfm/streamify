@@ -1,57 +1,8 @@
-// components/KeyMetrics.jsx
-import {
-  Analytics,
-  AttachMoney,
-  Home,
-  MusicNote,
-  People,
-  Settings,
-  VideoLibrary,
-  MenuOpen,
-  Menu,
-} from "@mui/icons-material";
+import { MusicNote } from "@mui/icons-material";
 import CurrencyExchange from "@mui/icons-material/CurrencyExchange";
 import StarIcon from "@mui/icons-material/Star";
 import GroupIcon from "@mui/icons-material/Group";
-
-export default function KeyMetrics({ data }) {
-  return (
-    <div className="flex w-full flex-wrap gap-4  pb-8 ">
-      <MetricCard
-        title="Total Users"
-        value={data.totalUsers.value.toLocaleString()}
-        icon={<GroupIcon />}
-        increaseBy={data.totalUsers.increaseInPercent}
-      />
-      <MetricCard
-        title="Active Users"
-        value={data.activeUsers.value.toLocaleString()}
-        icon="🔥"
-        increaseBy={data.activeUsers.increaseInPercent}
-      />
-      <MetricCard
-        title="Total Streams"
-        value={data.totalStreams.value.toLocaleString()}
-        icon={<MusicNote />}
-        increaseBy={data.totalStreams.increaseInPercent}
-      />
-      <MetricCard
-        title="Revenue"
-        value={data.revenue.value.toLocaleString()}
-        icon={<CurrencyExchange />}
-        increaseBy={data.revenue.increaseInPercent}
-      />
-      <MetricCard
-        title="Top Artist"
-        value={data.topArtist.value.toLocaleString()}
-        icon={<StarIcon />}
-        withRef={false}
-        increaseInStream={data.topArtist.increaseInStream}
-      />
-      {/* Add other metrics */}
-    </div>
-  );
-}
+import React from "react";
 
 function MetricCard({
   title,
@@ -91,3 +42,44 @@ function MetricCard({
     </div>
   );
 }
+
+const KeyMetrics = React.memo(function KeyMetrics({ data }) {
+  return (
+    <div className="flex w-full flex-wrap gap-4  pb-8 ">
+      <MetricCard
+        title="Total Users"
+        value={data.totalUsers.value.toLocaleString()}
+        icon={<GroupIcon />}
+        increaseBy={data.totalUsers.increaseInPercent}
+      />
+      <MetricCard
+        title="Active Users"
+        value={data.activeUsers.value.toLocaleString()}
+        icon="🔥"
+        increaseBy={data.activeUsers.increaseInPercent}
+      />
+      <MetricCard
+        title="Total Streams"
+        value={data.totalStreams.value.toLocaleString()}
+        icon={<MusicNote />}
+        increaseBy={data.totalStreams.increaseInPercent}
+      />
+      <MetricCard
+        title="Revenue"
+        value={data.revenue.value.toLocaleString()}
+        icon={<CurrencyExchange />}
+        increaseBy={data.revenue.increaseInPercent}
+      />
+      <MetricCard
+        title="Top Artist"
+        value={data.topArtist.value.toLocaleString()}
+        icon={<StarIcon />}
+        withRef={false}
+        increaseInStream={data.topArtist.increaseInStream}
+      />
+      {/* Add other metrics */}
+    </div>
+  );
+});
+
+export default KeyMetrics;

@@ -71,16 +71,17 @@ export default function Dashboard() {
 
           <div className="p-8 w-full">
             <div className="w-full flex flex-wrap justify-between">
-              <h1 className="font-bold text-[40px] pt-8 pb-8">
+              <h1 className="font-bold text-5xl pt-10 pb-8">
                 Streamify Analytics
               </h1>
-              <div className="mt-10">
+              <div className="mt-10 hidden md:flex">
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={30}
                   label="Age"
                   height={30}
+                  className="h-10"
                   aria-label="Data"
                   // onChange={handleChange}
                 >

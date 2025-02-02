@@ -2,6 +2,7 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { saveAs } from "file-saver";
+import DownloadIcon from "@mui/icons-material/Download";
 
 const columns = [
   { field: "userId", headerName: "User ID", width: 100 },
@@ -20,24 +21,39 @@ const columns = [
   { field: "streams", headerName: "Streams", width: 250, filterable: true },
 ];
 
-// CSV export function
+/**
+ * Exports data to CSV format and triggers browser download
+ */
 const exportToCsv = (data, columns, filename) => {
+  // Create CSV header row from column headers
   const csvHeader = columns.map((col) => col.headerName).join(",");
-  const csvRows = data
-    .map((row) =>
-      columns
-        .map((col) => {
-          const value = row[col.field];
-          return typeof value === "string"
-            ? `"${value.replace(/"/g, '""')}"`
-            : value;
-        })
-        .join(",")
-    )
-    .join("\n");
 
+  // Process each data row into CSV format
+  const csvRows = data
+    .map(
+      (row) =>
+        columns
+          // Map each column to its corresponding value in the row
+          .map((col) => {
+            const value = row[col.field];
+
+            return typeof value === "string"
+              ? `"${value.replace(/"/g, '""')}"` // CSV escaping rule for quotes
+              : value;
+          })
+          .join(",") // Join column values with commas
+    )
+    .join("\n"); // Join rows with newline characters
+
+  // Combine header and rows into final CSV content
   const csvString = [csvHeader, csvRows].join("\n");
-  const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+
+  // Create downloadable file
+  const blob = new Blob([csvString], {
+    type: "text/csv;charset=utf-8;", // Set proper MIME type
+  });
+
+  // Trigger browser download using FileSaver.js
   saveAs(blob, `${filename}.csv`);
 };
 
@@ -48,22 +64,15 @@ export function DataTable({ data }) {
     setRows(data);
   }, [data]);
 
-  // const getRowClassName = (params) => {
-  //   // Check if it's the first row
-  //   if (params.index === 0) {
-  //     return 'first-row'; // Apply custom class to the first row
-  //   }
-  //   return ''; // No class for other rows
-  // };
-
   return (
     <div className="pt-4  bg-white rounded-lg shadow-sm">
       <div className="flex justify-between items-center p-2">
         <h3 className="text-xl ml-4 font-semibold">Recent Revenue</h3>
         <Button
+          className="mr-4 font-semibold"
           variant="contained"
+          startIcon={<DownloadIcon />}
           onClick={() => exportToCsv(data, columns, "revenue_data")}
-          className="mr-4"
         >
           Export CSV
         </Button>

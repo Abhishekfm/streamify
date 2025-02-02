@@ -13,7 +13,6 @@ import {
   MenuOpen,
   Menu,
 } from "@mui/icons-material";
-import { useState } from "react";
 
 export function Header({ isOpen, setIsOpen }) {
   return (
@@ -22,9 +21,6 @@ export function Header({ isOpen, setIsOpen }) {
       className=" shadow-none border-b border-gray-200 bg-black"
     >
       <Toolbar className="justify-between bg-black">
-        {/* <Typography variant="h6" className="text-gray-900">
-          Dashboard
-        </Typography> */}
         <Box className="flex items-center justify-between p-2">
           <IconButton onClick={() => setIsOpen(!isOpen)} className="ml-auto">
             {isOpen ? (
