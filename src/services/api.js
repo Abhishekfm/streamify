@@ -10,8 +10,8 @@ const api = axios.create({
     : "http://localhost:3001",
 });
 
-export const getKeyMetrics = () => api.get("/keyMetrics");
-export const getUserGrowth = () => api.get("/userGrowth");
-export const getRevenue = () => api.get("/revenue");
-export const getTopSongs = () => api.get("/topSongs?_limit=5");
-export const getStreams = (params) => api.get("/streams", { params });
+export const getKeyMetrics = () => api.get("api/keyMetrics");
+export const getUserGrowth = () => api.get("api/userGrowth");
+export const getRevenue = () => api.get("api/revenue");
+export const getTopSongs = () => api.get("api/topSongs?_limit=5");
+export const getStreams = (params) => api.get("api/streams", { params });
