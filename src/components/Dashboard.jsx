@@ -14,17 +14,7 @@ import { DataTable } from "./DataTable";
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import { MenuItem, Select } from "@mui/material";
-
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
-
-export function CircularIndeterminate() {
-  return (
-    <Box sx={{ display: "flex" }}>
-      <CircularProgress />
-    </Box>
-  );
-}
+import { LoadingSpinner } from "./LoadingSpinner";
 
 export default function Dashboard() {
   const [metrics, setMetrics] = useState(null);
@@ -63,7 +53,7 @@ export default function Dashboard() {
     return (
       <>
         <div className="w-full h-dvh flex justify-center items-center">
-          <CircularIndeterminate />
+          <LoadingSpinner />
         </div>
       </>
     );
