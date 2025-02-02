@@ -28,7 +28,7 @@
   ],
   "revenue": [
     { "source": "Subscriptions", "amount": 4200000 },
-    { "source": "Preamium", "amount": 1787500 },
+    { "source": "Premium", "amount": 1787500 },
     { "source": "Ads", "amount": 1048960 }
   ],
   "topSongs": [
