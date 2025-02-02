@@ -72,7 +72,6 @@ npm start
 src/
 ├── components/       # React components
 ├── context/          # Data management
-├── data/             # Mock data files
 ├── services/         # API service layer
 ├── App.jsx           # Main application
 └── main.jsx          # Entry point
@@ -105,11 +104,7 @@ src/
    - Chose Chart.js over D3 for faster implementation
    - Sacrificed some customization for development speed
 
-4. **State Management**:
-
-   - Used Context API instead of Redux to minimize boilerplate
-
-5. **Testing Strategy**:
+4. **Testing Strategy**:
    - Focused on core functionality testing
    - Postponed comprehensive test coverage for faster delivery
 
@@ -133,11 +128,6 @@ const MemoizedChart = React.memo(RevenuePieChart);
 ```javascript
 const HeavyComponent = React.lazy(() => import("./HeavyComponent"));
 ```
-
-4. **Virtualized Table**:
-
-- Implemented windowing for large datasets
-- Lazy-loaded table rows
 
 ## Technologies Used
 
