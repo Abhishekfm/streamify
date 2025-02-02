@@ -2,10 +2,12 @@
 
 import axios from "axios";
 
-const isProduction = process.env.NODE_ENV === "production";
+const isDevelopment = process.env.NODE_ENV === "development";
 
 const api = axios.create({
-  baseURL: "https://my-json-server.typicode.com/Abhishekfm/streamify",
+  baseURL: isDevelopment
+    ? "http://localhost:3001"
+    : "https://my-json-server.typicode.com/Abhishekfm/streamify",
 });
 
 export const getKeyMetrics = () => api.get("/keyMetrics");

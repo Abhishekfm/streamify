@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 // context/DashboardContext.jsx
 import { createContext, useState } from "react";
 

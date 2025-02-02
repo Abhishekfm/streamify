@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
@@ -16,7 +14,6 @@ const columns = [
     filterable: true,
     type: "date",
     valueGetter: (params) => {
-      console.log("params", params);
       return new Date(params);
     },
   },
@@ -48,7 +45,6 @@ export function DataTable({ data }) {
   const [rows, setRows] = React.useState(data);
 
   React.useEffect(() => {
-    console.log("rows", data);
     setRows(data);
   }, [data]);
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
@@ -7,8 +6,6 @@ import { Chart as ChartJS, registerables } from "chart.js";
 ChartJS.register(...registerables);
 
 export default function UserGrowthChart({ data }) {
-  console.log("user Growth", data);
-
   useEffect(() => {
     return () => {
       ChartJS?.helpers?.each(ChartJS.instances, function (instance) {

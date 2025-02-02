@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 // components/KeyMetrics.jsx
 import {
   Analytics,
@@ -16,7 +15,6 @@ import StarIcon from "@mui/icons-material/Star";
 import GroupIcon from "@mui/icons-material/Group";
 
 export default function KeyMetrics({ data }) {
-  console.log("data", data);
   return (
     <div className="flex w-full flex-wrap gap-4  pb-8 ">
       <MetricCard

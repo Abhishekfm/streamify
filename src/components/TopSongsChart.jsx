@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -12,23 +11,7 @@ import {
 // Register Chart.js modules
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-// [
-//     {
-//         "id": 1,
-//         "title": "Blinding Lights",
-//         "artist": "The Weeknd",
-//         "streams": 1502345
-//     },
-//     {
-//         "id": 2,
-//         "title": "Flowers",
-//         "artist": "Miley Cyrus",
-//         "streams": 1324590
-//     }
-// ]
-
 export default function TopSongsChart({ data }) {
-  console.log("songs", data);
   const chartData = {
     labels: data.map((d) => d.title),
     datasets: [
