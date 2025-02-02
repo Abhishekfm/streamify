@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { Button } from "@mui/material";
+import { saveAs } from "file-saver";
 
 const columns = [
   { field: "userId", headerName: "User ID", width: 100 },
@@ -21,6 +23,27 @@ const columns = [
   { field: "streams", headerName: "Streams", width: 250, filterable: true },
 ];
 
+// CSV export function
+const exportToCsv = (data, columns, filename) => {
+  const csvHeader = columns.map((col) => col.headerName).join(",");
+  const csvRows = data
+    .map((row) =>
+      columns
+        .map((col) => {
+          const value = row[col.field];
+          return typeof value === "string"
+            ? `"${value.replace(/"/g, '""')}"`
+            : value;
+        })
+        .join(",")
+    )
+    .join("\n");
+
+  const csvString = [csvHeader, csvRows].join("\n");
+  const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+  saveAs(blob, `${filename}.csv`);
+};
+
 export function DataTable({ data }) {
   const [rows, setRows] = React.useState(data);
 
@@ -39,11 +62,24 @@ export function DataTable({ data }) {
 
   return (
     <div className="pt-4  bg-white rounded-lg shadow-sm">
-      <h3 className="text-xl p-2 ml-4 font-semibold mb-4">Recent Revenue</h3>
+      <div className="flex justify-between items-center p-2">
+        <h3 className="text-xl ml-4 font-semibold">Recent Revenue</h3>
+        <Button
+          variant="contained"
+          onClick={() => exportToCsv(data, columns, "revenue_data")}
+          className="mr-4"
+        >
+          Export CSV
+        </Button>
+      </div>
       <DataGrid
         rows={rows}
         columns={columns}
-        // pageSizeOptions={[5, 10, 20]}
+        initialState={{
+          //Add this prop
+          pagination: { paginationModel: { pageSize: 5 } }, // Setting initial pageSize
+        }}
+        pageSizeOptions={[5, 10, 20]}
         disableColumnFilter={false}
         // getRowClassName={getRowClassName}
       />

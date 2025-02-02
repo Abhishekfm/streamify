@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   getKeyMetrics,
   getUserGrowth,
@@ -23,6 +23,7 @@ export default function Dashboard() {
   const [topSongs, setTopSongs] = useState([]);
   const [streams, setStreams] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
+  const MemoizedChart = React.memo(RevenuePieChart);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,7 +99,7 @@ export default function Dashboard() {
                 <UserGrowthChart data={userGrowth} />
               </div>
               <div className="w-full">
-                <RevenuePieChart data={revenue} />
+                <MemoizedChart data={revenue} />
               </div>
             </div>
 

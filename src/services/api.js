@@ -1,8 +1,13 @@
-// services/api.js
+/* eslint-disable no-undef */
+
 import axios from "axios";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: isProduction
+    ? process.env.VITE_API_BASE_URL
+    : "http://localhost:3001",
 });
 
 export const getKeyMetrics = () => api.get("/keyMetrics");
